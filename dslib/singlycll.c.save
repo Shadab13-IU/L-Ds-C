@@ -1,0 +1,52 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include"scll.h"
+t create(int num){
+	int data;
+	t temp, head=NULL;
+	for(int i=1; i<=num; i++){
+		temp=(t)malloc(sizeof(node));
+		temp->next=temp;
+		printf("Enter the data\n");
+		scanf("%d",&(temp->data));
+		if(head==NULL){
+			head=temp;
+		}else{
+			t p=head;
+			while(p->next!=head)p=p->next;
+				p->next=temp;
+				temp->next=head;
+			}
+		}
+		return head;
+}
+void insert(t** hpointer,int pos,int data){
+		t temp=(t)malloc(sizeof(node));
+		temp->next=temp;
+		temp->data=data;
+		if(*hpointer==NULL){
+			*hpointer=temp;
+		}else if(*hpointer==NULL && pos>1){
+			printf("list is empty\n");
+		}else if(*hpointer!=NULL && pos==1){
+			temp->next=*hpointer;
+			*hpointer=temp;
+		}else if(*hpointer!=NULL && pos>1){
+			
+void traverse(t head){
+	t p=head;
+	do{
+		printf("%d\t",p->data);
+	        p=p->next;
+	}while(p!=head);
+	printf("%d",p->data);
+	printf("\n");
+}
+int main(int argc,char* argv[]){
+	int non;
+	printf("Enter non:");
+	scanf("%d",&non);
+	t head=create(non);
+	traverse(head);
+	return 0;
+}

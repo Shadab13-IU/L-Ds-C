@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<stdlib.h>
+ 
+ int enqueue(int);
+ int dequeue();
+ 
+ int front=-1;
+ int rear=-1;
+ int queue[10];
+  
+ int main(int argc,char argv[]){
+     int option;
+     int data;
+     while(1){
+          printf("1.Enqueue\n");
+          printf("2.Dequeue\n");
+          printf("3.exit\n");
+          printf("3.Enter option\n");
+          scanf("%d",&option);
+          switch(option){
+                case 1:
+                      printf("Enqueue\n");
+                      printf("ENter data\n");
+                      scanf("%d",&data);
+                      enqueue(data);
+                      break;
+                  	
+                case 2:
+                      printf("Dequeue\n");
+                      dequeue();
+                      break;
+                case 3:
+                      exit(0);
+                default:
+                      printf("wrong option");
+           }
+      }
+ }
+
+
+   int enqueue(int data){
+       int len=sizeof(queue)/sizeof(queue[0]);
+       if(rear==len-1)return 0;
+       queue[++rear]=data;
+       if(front==-1)front=rear;
+       return 1;
+   }
+   int dequeue(){
+       if((front>rear)||(rear==-1 && front==-1)){
+          front=-1;
+          rear=-1;
+          return -1;
+       }
+       return queue[front++];
+ }

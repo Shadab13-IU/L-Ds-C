@@ -1,0 +1,71 @@
+#include<stdio.h>
+#include<stdlib.h>
+ 
+void createlist(); 
+ void traverse();
+ struct node{
+        int data;
+        struct node* next;
+ };
+
+ 
+  int main(){
+    struct node* head=NULL;
+   // struct node* rtr=NULL;
+     // createlist(struct node* head);
+      int option;
+            
+      while(1){
+          printf("1.Create list\n");
+          printf("2.traverse list\n");
+          printf("12. Exit\n");
+          printf("Enter the option\n");
+          scanf("%d",&option); 
+          switch(option){
+                case 1:
+                     printf("List created\n"); 
+                     createlist(&head); 
+                     break;
+                case 2:
+                     printf("List traversed\n");
+                     traverse(&head);                   
+                     break;
+                case 12:
+                     exit(0);
+                default:
+                     printf("Wrong option\n");
+         }
+      }
+  }
+   void  createlist(struct node **start){
+           int non;
+           printf("Enter the non\n");
+           scanf("%d",&non);
+          struct node* p;
+           for(int i=1; i<=non; i++){
+             struct node* temp=(struct node*)malloc(sizeof(struct node));
+              temp->next=NULL;
+              printf("Enter node data\n");
+              scanf("%d",&(temp->data));
+              if(i==1){
+                *start=temp;
+                p=*start;
+              }else{
+                   
+                   while(p->next!=NULL)p=p->next;
+                        p->next=temp;
+               }
+           }
+          // return head;          
+      }  
+
+
+  void traverse(struct node **start){
+             struct node*p=start;
+              while(p!=NULL){
+                   printf("%d\t",p->data);
+                   p=p->next;
+              }
+       printf("\n");
+
+  }
